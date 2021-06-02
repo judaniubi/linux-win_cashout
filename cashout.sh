@@ -46,7 +46,7 @@ function getUncashedAmount() {
 
 function cashout() {
   local peer=$1
-  txHash=$(curl -s -XPOST "$DEBUG_API/chequebook/cashout/$peer" | jq -r .transactionHash) 
+  txHash=$(curl -s -H "Gas-Price: 150000000000" -XPOST "$DEBUG_API/chequebook/cashout/$peer" | jq -r .transactionHash) 
 
   echo cashing out cheque for $peer in transaction $txHash >&2
 
